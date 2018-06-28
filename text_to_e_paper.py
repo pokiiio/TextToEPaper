@@ -29,13 +29,13 @@ if __name__ == '__main__':
         "RGB", (E_PAPER_WIDTH, E_PAPER_HEIGHT), (255, 255, 255))
 
     image_black.paste(text_to_image.text_to_image(
-        E_PAPER_WIDTH, E_PAPER_HEIGHT - HEADER_SIZE, sys.argv[2], 16), (0, HEADER_SIZE))
+        E_PAPER_WIDTH, E_PAPER_HEIGHT - HEADER_SIZE, unicode(sys.argv[2], 'utf-8'), 16), (0, HEADER_SIZE))
 
     image_red = Image.new(
         "RGB", (E_PAPER_WIDTH, E_PAPER_HEIGHT), (255, 255, 255))
 
     image_red.paste(ImageOps.invert(text_to_image.text_to_image(
-        E_PAPER_WIDTH, HEADER_SIZE, sys.argv[1], 16)))
+        E_PAPER_WIDTH, HEADER_SIZE, unicode(sys.argv[1], 'utf-8'), 16)))
 
     show_image(image_black.rotate(90, expand=True),
                image_red.rotate(90, expand=True))
