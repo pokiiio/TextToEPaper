@@ -39,7 +39,7 @@ if __name__ == '__main__':
             E_PAPER_WIDTH, E_PAPER_HEIGHT / info_count - HEADER_SIZE, unicode(sys.argv[2 + 2 * num], 'utf-8'), text_size), (0, HEADER_SIZE + E_PAPER_HEIGHT / info_count * num))
 
         image_red.paste(ImageOps.invert(text_to_image.text_to_image(
-            E_PAPER_WIDTH, HEADER_SIZE, unicode(sys.argv[1 + 2 * num], 'utf-8'), text_size)), (0, E_PAPER_HEIGHT / info_count * num))
+            E_PAPER_WIDTH, HEADER_SIZE, unicode(sys.argv[1 + 2 * num], 'utf-8'), 16)), (0, E_PAPER_HEIGHT / info_count * num))
 
     show_image(image_black.rotate(90, expand=True),
                image_red.rotate(90, expand=True))
