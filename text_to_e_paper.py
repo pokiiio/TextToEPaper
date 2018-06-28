@@ -22,20 +22,23 @@ def show_image(black_image, red_image):
 
 
 if __name__ == '__main__':
-    if (len(sys.argv) < 3):
+    if (len(sys.argv) < 3 or len(sys.argv) % 2 == 0):
         quit()
+
+    info_count = (len(sys.argv) - 1) / 2
 
     image_black = Image.new(
         "RGB", (E_PAPER_WIDTH, E_PAPER_HEIGHT), (255, 255, 255))
 
-    image_black.paste(text_to_image.text_to_image(
-        E_PAPER_WIDTH, E_PAPER_HEIGHT - HEADER_SIZE, unicode(sys.argv[2], 'utf-8'), 16), (0, HEADER_SIZE))
-
     image_red = Image.new(
         "RGB", (E_PAPER_WIDTH, E_PAPER_HEIGHT), (255, 255, 255))
 
-    image_red.paste(ImageOps.invert(text_to_image.text_to_image(
-        E_PAPER_WIDTH, HEADER_SIZE, unicode(sys.argv[1], 'utf-8'), 16)))
+    for num in range(info_count):
+        image_black.paste(text_to_image.text_to_image(
+            E_PAPER_WIDTH, E_PAPER_HEIGHT / info_count - HEADER_SIZE, unicode(sys.argv[2 + 2 * num], 'utf-8'), 16), (0, HEADER_SIZE + E_PAPER_HEIGHT / info_count * num))
+
+        image_red.paste(ImageOps.invert(text_to_image.text_to_image(
+            E_PAPER_WIDTH, HEADER_SIZE, unicode(sys.argv[1 + 2 * num], 'utf-8'), 16)), (0, E_PAPER_HEIGHT / info_count * num))
 
     show_image(image_black.rotate(90, expand=True),
                image_red.rotate(90, expand=True))
