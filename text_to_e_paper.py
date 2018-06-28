@@ -26,6 +26,7 @@ if __name__ == '__main__':
         quit()
 
     info_count = (len(sys.argv) - 1) / 2
+    text_size = 16 - 2 * (info_count - 1)
 
     image_black = Image.new(
         "RGB", (E_PAPER_WIDTH, E_PAPER_HEIGHT), (255, 255, 255))
